@@ -1,0 +1,43 @@
+this is a shifted sphere, it only closes when periodic boundary conditions are in place. When not blowed up, we should get an interval [-1,0] in dimension 2
+this is a shifted sphere, it only closes when periodic boundary conditions are in place
+1 0 0 0
+6 1 0 0
+6 0 1 0
+6 0 0 1
+1 0 0 0 0
+0	0	0	0	0	0
+0	-1	-1	-1	-1	0
+0	-1	0	0	-1	0
+0	-1	0	0	-1	0
+0	-1	-1	-1	-1	0
+0	0	0	0	0	0
+0	0	0	0	0	0
+0	-1	-1	-1	-1	0
+0	-1	-1	-1	-1	0
+0	-1	-1	-1	-1	0
+0	-1	-1	-1	-1	0
+0	0	0	0	0	0
+0	0	0	0	0	0
+0	0	0	0	0	0
+0	0	0	0	0	0
+0	0	0	0	0	0
+0	0	0	0	0	0
+0	0	0	0	0	0
+0	0	0	0	0	0
+0	-1	-1	-1	-1	0
+0	-1	-1	-1	-1	0
+0	-1	-1	-1	-1	0
+0	-1	-1	-1	-1	0
+0	0	0	0	0	0
+0	0	0	0	0	0
+0	-1	-1	-1	-1	0
+0	-1	0	0	-1	0
+0	-1	0	0	-1	0
+0	-1	-1	-1	-1	0
+0	0	0	0	0	0
+0	0	0	0	0	0
+0	-1	-1	-1	-1	0
+0	-1	0	0	-1	0
+0	-1	0	0	-1	0
+0	-1	-1	-1	-1	0
+0	0	0	0	0	0
