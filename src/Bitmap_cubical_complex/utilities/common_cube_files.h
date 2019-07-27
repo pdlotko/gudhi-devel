@@ -65,7 +65,7 @@ std::vector< int > find_counter_corresponding_to_position( unsigned position , s
 {
 	std::vector< int >  result(3);
 	
-	cerr << "position : "<<position << "(params[0]*params[1]) : " << (params[0]*params[1]) << endl;
+	//cerr << "position : "<<position << "(params[0]*params[1]) : " << (params[0]*params[1]) << endl;
 	
 	result[2] = position/(params[0]*params[1]);
 	position = position%(params[0]*params[1]);

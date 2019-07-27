@@ -18,6 +18,14 @@ if (NOT CGAL_WITH_EIGEN3_VERSION VERSION_LESS 4.11.0)
     target_link_libraries(alpha_complex_3d_persistence ${TBB_LIBRARIES})
   endif(TBB_FOUND)
 
+#Pawel's modification to make it compatible with Aiida type soft
+  add_executable(alpha_complex_persistence_xyz_file alpha_complex_persistence_xyz_file.cpp)
+  target_link_libraries(alpha_complex_persistence_xyz_file ${CGAL_LIBRARY} ${Boost_PROGRAM_OPTIONS_LIBRARY})
+  if (TBB_FOUND)
+    target_link_libraries(alpha_complex_persistence_xyz_file ${TBB_LIBRARIES})
+  endif(TBB_FOUND)
+
+
   add_test(NAME Alpha_complex_utilities_alpha_complex_3d COMMAND $<TARGET_FILE:alpha_complex_3d_persistence>
           "${CMAKE_SOURCE_DIR}/data/points/tore3D_300.off"
           "-p" "2" "-m" "0.45" "-o" "safe.pers")

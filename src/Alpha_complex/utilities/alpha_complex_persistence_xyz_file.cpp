@@ -123,8 +123,6 @@ std::vector< Point > read_xyz_file( const char* filename )
 **/ 
 std::vector< std::vector<double> > read_xyz_file_cuboid( const char* filename )
 {
-	bool dbg = true;
-	
 	std::ifstream in;
 	in.open(filename);
 	if ( !in.good() )
@@ -162,10 +160,6 @@ std::vector< std::vector<double> > read_xyz_file_cuboid( const char* filename )
 
 
 
-
-
-
-
 bool check_if_cuboid_is_a_cube( const std::vector< std::vector<double> >& cubo_data , double& x_min, double& y_min, double& z_min, double& x_max, double& y_max , double& z_max )
 {
    //here we check if the considered cuboid is a cube:
@@ -187,7 +181,9 @@ bool check_if_cuboid_is_a_cube( const std::vector< std::vector<double> >& cubo_d
 		 {
 			 //and now we knot it is a cube:
 			 periodic_version = true;
-			 x_min = y_min = z_min = 0;
+			 x_min = cubo_data[0][1];
+			 y_min = cubo_data[1][0];
+			 z_min = cubo_data[2][0];
 			 x_max = cubo_data[0][0];
 			 y_max = cubo_data[1][1];
 			 z_max = cubo_data[2][2];
@@ -199,7 +195,7 @@ bool check_if_cuboid_is_a_cube( const std::vector< std::vector<double> >& cubo_d
 
 int main(int argc, char **argv) 
 {
-  std::cout << "This program compute alpha complex persistence of a collection of points stored in .xyz file. In case the unit cell is ortogonal cube, it will impose the periodic boundary conditions. Please provide the path to .xyz file as a parameter of this program. \n";
+  std::cout << "This program compute alpha complex persistence of a collection of points stored in .xyz file. In case the unit cell is ortogonal cube, it will impose the periodic boundary conditions. Please provide the path to .xyz file as a parameter of this program. \n\n";
 	
   if ( argc != 2 )
   {
@@ -216,7 +212,6 @@ int main(int argc, char **argv)
   Filtration_value min_persistence = 0.;
   bool exact_version = false;
   bool fast_version = false;
-  bool weighted_version = false;
   bool periodic_version = false;
 
   
@@ -254,8 +249,20 @@ int main(int argc, char **argv)
   double x_min, y_min, z_min, x_max, y_max , z_max;
   cout << "Will be reading points from : " << argv[1] << endl;
   std::vector< std::vector<double> > cuboid_data = read_xyz_file_cuboid( argv[1] );
-
-  periodic_version = check_if_cuboid_is_a_cube( cuboid_data , x_min, y_min, z_min, x_max, y_max , z_max );
+  
+  //cout << cuboid_data[0][0] << " "  << cuboid_data[0][1] << " " << cuboid_data[0][2] << "\n";
+  //cout << cuboid_data[1][0] << " "  << cuboid_data[1][1] << " " << cuboid_data[1][2] << "\n";
+  //cout << cuboid_data[2][0] << " "  << cuboid_data[2][1] << " " << cuboid_data[2][2] << "\n";
+  //periodic_version = check_if_cuboid_is_a_cube( cuboid_data , x_min, y_min, z_min, x_max, y_max , z_max );
+  //if ( !periodic_version )
+  //{
+//	  cerr << "As the bounding box is not a cuboid, the current implementation do not support periodic boundary conditions. Sorry...\n";
+//  }
+ // else
+  //{
+//	  cerr << "The bounding box is a cube, periodic bounday conditions will be imposed. \n";
+//	  cout << "Here is the bounding box : " << x_min << " " << y_min << " " << z_min << " " << x_max << " " << y_max << " " << z_max << endl;
+ // }
          
 
   switch (complexity) {
